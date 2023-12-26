@@ -19,6 +19,7 @@ const store = configureStore(reducer, middleware);
 ReactDOM.render(
   <Provider store={store}>
       <Router>
+        <App />
         <h1>Testing Rendering</h1>
         <p>This is a test component to check if rendering works.</p>
       </Router>
