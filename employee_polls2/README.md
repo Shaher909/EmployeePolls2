@@ -68,3 +68,13 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 ### `npm run build` fails to minify
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+
+
+# my notes:
+install react-redux-loading-bar
+install redux
+install react-redux
+install react-redux-loading-bar
+install react-router-dom
+install --> npm install --save-dev @babel/plugin-proposal-private-property-in-object
+install redux-thunk
