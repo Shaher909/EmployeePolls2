@@ -1,20 +1,25 @@
 
-const Login = ({ users }) => {
+import Title from "./Title";
+
+const Login = () => {
 
     return (
         <div>
+            <Title text={"Employees Polls Portal - Login Page"} />
             <label for="dropdown">Username:</label>
-            <select id="dropdown" name="users">
-                {Object.keys(users).map(id => (
-                <option value={id}>{users[id].name}</option>
-                ))}
-            </select>
-            <input type="button" value="Login" />
+            <br />
+            <input type="button" className="btn" value="Login" />
         </div>
     ); 
 }
 
 export default Login;
 
-
+/*
+<select id="dropdown" name="users">
+                {Object.keys(users).map(id => (
+                <option value={id}>{users[id].name}</option>
+                ))}
+            </select>
+            */
 

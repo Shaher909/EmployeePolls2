@@ -3,7 +3,16 @@ import { connect }  from "react-redux";
 import { handleInitialData } from "../actions/shared";
 import LoadingBar  from "react-redux-loading-bar";
 import { Routes, Route } from "react-router-dom";
+
 import Title from './Title';
+import Dashboard from "./Dashboard";
+import Poll from "./Poll";
+import Error from "./Error";
+import PollCreation from "./PollCreation";
+import Leaderboard from "./Leaderboard";
+import Login from "./Login";
+import Header from "./Header";
+
 import '../App.css';
 
 const App = (props) => {
@@ -13,13 +22,18 @@ const App = (props) => {
   return (
     <Fragment>
       <LoadingBar />
-      <div className="container">
-          <p>test</p>
-          <Title text={"Test Component Render"}></Title>
+      <div className="container App">
+      <Header />
           {
             props.loading === true ? null : (
               <Routes>
-                <Route path="/" exact element={<Title text={'test'} />} />
+                <Route path="/" exact element={<Login />} />
+                <Route path="/login" exact element={<Login />} />
+                <Route path="/dashboard" exact element={<Dashboard/>} />
+                <Route path="/poll" exact element={<Poll />} />
+                <Route path="/error" exact element={<Error />} />
+                <Route path="/add" exact element={<PollCreation />} />
+                <Route path="/leaderboard" exact element={<Leaderboard />} />
               </Routes>
             )
           }
