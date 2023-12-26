@@ -76,5 +76,10 @@ install redux
 install react-redux
 install react-redux-loading-bar
 install react-router-dom
-install --> npm install --save-dev @babel/plugin-proposal-private-property-in-object
+install --save-dev @babel/plugin-proposal-private-property-in-object
 install redux-thunk
+run npm install redux react-redux
+run npm install @reduxjs/toolkit
+if the _connect method gives error try
+    rm -rf node_modules
+    npm install

@@ -5,7 +5,7 @@ import App from './components/App';
 import reportWebVitals from './reportWebVitals';
 
 //store creation
-import { configureStore } from '@reduxjs/toolkit';
+import { createStore } from "redux";
 import { Provider } from "react-redux";
 import reducer from './reducers';
 
@@ -14,7 +14,7 @@ import middleware from "./middleware";
 
 import { BrowserRouter as Router } from "react-router-dom";
 
-const store = configureStore(reducer, middleware);
+const store = createStore(reducer, middleware);
 
 ReactDOM.render(
   <Provider store={store}>
