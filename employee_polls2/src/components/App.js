@@ -23,7 +23,7 @@ const App = (props) => {
     <Fragment>
       <LoadingBar />
       <div className="container App">
-      <Header />
+          {props.authedUser && <Header user={props.authedUser} />}
           {
             props.loading === true ? null : (
               <Routes>
@@ -45,6 +45,7 @@ const App = (props) => {
 
 const mapStateToProps = ({authedUser}) => ({
   loading: authedUser === null,
+  authedUser: authedUser,
 });
 
 export default connect(mapStateToProps)(App);

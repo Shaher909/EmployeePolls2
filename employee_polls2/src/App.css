@@ -48,6 +48,22 @@ a {
   color: #252525;
 }
 
+.header {
+  border: 1px solid black; /* Add a 1px solid black border */
+  padding: 10px; /* Add some padding to make the border visible */
+}
+
+.header a {
+  text-decoration: none;
+  color: #252525;
+  font-weight: bold;
+  transition: color 0.3s ease; /* Add a smooth color transition */
+}
+
+.header a:hover {
+  color: #ff4500; /* Change color on hover */
+}
+
 .header ul {
   display: flex;
   flex-direction: row;
@@ -84,6 +100,7 @@ a {
 
 ul {
   padding-left: 0;
+  align-items: center; /* Center items vertically */
 }
 
 li {
@@ -96,4 +113,16 @@ li {
   height: 50px;
   border-radius: 25px;
   margin: 10px;
+}
+
+.userOverview {
+  display: flex;
+  align-items: center; /* Center items vertically */
+  padding: 10px; /* Optional: Add padding for better spacing */
+  margin-left: auto; /* Push .userOverview to the right */
+}
+
+.userOverview img,
+.userOverview p {
+  margin-left: 10px; /* Add some margin between img and p */
 }

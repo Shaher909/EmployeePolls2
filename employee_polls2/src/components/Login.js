@@ -6,7 +6,7 @@ const Login = () => {
     return (
         <div>
             <Title text={"Employees Polls Portal - Login Page"} />
-            <label for="dropdown">Username:</label>
+            <label htmlFor="dropdown">Username:</label>
             <br />
             <input type="button" className="btn" value="Login" />
         </div>

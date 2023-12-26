@@ -1,6 +1,10 @@
 import { Link } from "react-router-dom";
 
-const Header = () => {
+const Header = ({user}) => {
+
+    const avatar = user.avatarURL;
+    const name = user.name;
+    const id = user.id
 
     return (
         <nav className="header">
@@ -14,6 +18,10 @@ const Header = () => {
                 <li>
                     <Link to="/add">New</Link>
                 </li>
+                <div className="userOverview">
+                    <img src={avatar} alt={`${name}`} className="avatar" />
+                    <p>{`${id}`}</p>
+                </div>
             </ul>
         </nav>
     ); 
