@@ -8,11 +8,13 @@ const Login = ({ users, dispatch }) => {
 
     const [selectedUser, setSelectedUser] = useState('');
 
-    const handleLogin = () => {
+    const handleLogin = async () => {
         if (selectedUser) {
-          dispatch(setAuthUser(selectedUser));
-          dispatch(handleUserDetails(selectedUser));
-          
+          // Dispatch handleUserDetails and wait for the promise to resolve
+          const userDetails = await dispatch(handleUserDetails(selectedUser));
+    
+          // Dispatch setAuthUser with the user details
+          dispatch(setAuthUser(userDetails.id));
         } else {
           // Handle case when no user is selected
           console.log('Please select a user.');
@@ -38,6 +40,7 @@ const Login = ({ users, dispatch }) => {
                 </option>
                 ))}
             </select>
+            <br />
             <input type="button" className="btn" value="Login" onClick={handleLogin} />
         </div>
     ); 

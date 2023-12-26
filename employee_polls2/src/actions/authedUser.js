@@ -17,12 +17,9 @@ export function receiveUserDetails(user) {
 
 export function handleUserDetails(id) {
     return (dispatch, getState) => {
-      // Assuming your state has a 'users' slice
-      const users = getState().users;
-      
-      // Find the user details from the store using the provided ID
-      const userDetails = users[id];
-      
-      dispatch(receiveUserDetails(userDetails));
+        const users = getState().users;
+        const userDetails = users[id];
+        dispatch(receiveUserDetails(userDetails));
+        return Promise.resolve(userDetails);
     };
   }

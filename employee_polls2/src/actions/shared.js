@@ -4,7 +4,7 @@ import { receiveUsers } from "./users";
 import { setAuthUser, handleUserDetails } from "./authedUser";
 import { showLoading, hideLoading } from "react-redux-loading-bar";
 
-const AUTHED_ID = "shaherjamaleddin"
+const AUTHED_ID = null;
 
 export function handleInitialData(){
     return (dispatch) => {

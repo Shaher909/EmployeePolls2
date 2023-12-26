@@ -1,10 +1,18 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { setAuthUser } from "../actions/authedUser";
+import { connect } from 'react-redux';
 
-const Header = ({user}) => {
+const Header = ({authedUser, dispatch}) => {
 
-    const avatar = user.avatarURL;
-    const name = user.name;
-    const id = user.id
+    const navigate = useNavigate();
+
+    const handleLogout = () => {
+        // Dispatch action to set authedUser to empty
+        dispatch(setAuthUser(null));
+    
+        // Redirect to the login page
+        navigate("/login");
+      };
 
     return (
         <nav className="header">
@@ -18,16 +26,34 @@ const Header = ({user}) => {
                 <li>
                     <Link to="/add">New</Link>
                 </li>
-                <div className="userOverview">
-                    <img src={avatar} alt={`${name}`} className="avatar" />
-                    <p>{`${id}`}</p>
-                </div>
+                
+                {authedUser.id !== null ?  (
+                <>
+                    <li>
+                    <div className="userOverview">
+                        <img src={authedUser?.avatarURL} alt={authedUser?.name} className="avatar" />
+                        <p>{authedUser?.id}</p>
+                    </div>
+                    </li>
+                    <li>
+                    <button onClick={handleLogout}>Logout</button>
+                    </li>
+                </>
+                ) : (
+                <li>
+                    <Link to="/login">Login</Link>
+                </li>
+                )}
             </ul>
         </nav>
     ); 
 }
 
-export default Header;
+const mapStateToProps = ({ authedUser }) => ({
+    authedUser,
+  });
+  
+  export default connect(mapStateToProps)(Header);
 
 
 

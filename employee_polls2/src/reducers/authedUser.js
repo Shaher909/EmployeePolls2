@@ -6,7 +6,7 @@ export default function authedUser(state = null, action){
             return { id: action.id };
         
         case RECEIVE_USER_DETAILS:
-            return action.user;
+            return action.user !== undefined ? action.user : state;
 
         default:
             return state;

@@ -2,7 +2,7 @@ import { useEffect, Fragment } from "react";
 import { connect }  from "react-redux";
 import { handleInitialData } from "../actions/shared";
 import LoadingBar  from "react-redux-loading-bar";
-import { Routes, Route } from "react-router-dom";
+import { Navigate, Routes, Route } from "react-router-dom";
 
 import Title from './Title';
 import Dashboard from "./Dashboard";
@@ -23,22 +23,31 @@ const App = (props) => {
     <Fragment>
       <LoadingBar />
       <div className="container App">
-          {props.authedUser && <Header user={props.authedUser} />}
-          {
-            props.loading === true ? null : (
-              <Routes>
-                <Route path="/" exact element={<Login />} />
-                <Route path="/login" exact element={<Login />} />
-                <Route path="/dashboard" exact element={<Dashboard/>} />
+        {props.authedUser && props.authedUser.id ? (
+          <Header user={props.authedUser} />
+        ) : null}
+        {props.loading === true ? null : (
+          <Routes>
+            {props.authedUser && props.authedUser.id ? (
+              <>
+                <Route path="/" exact element={<Dashboard />} />
+                <Route path="/dashboard" exact element={<Dashboard />} />
                 <Route path="/poll" exact element={<Poll />} />
                 <Route path="/error" exact element={<Error />} />
                 <Route path="/add" exact element={<PollCreation />} />
                 <Route path="/leaderboard" exact element={<Leaderboard />} />
-              </Routes>
-            )
-          }
+              </>
+            ) : (
+              <Route
+                path="/"
+                element={<Navigate to="/login" replace />}
+              />
+            )}
+            <Route path="/login" exact element={<Login />} />
+          </Routes>
+        )}
       </div>
-    </Fragment> 
+    </Fragment>
   );
 };
 
