@@ -3,7 +3,7 @@ let users = {
     id: 'sarahedo',
     password:'password123',
     name: 'Sarah Edo',
-    avatarURL: "https://avatars.githubusercontent.com/u/10826716?v=4",
+    avatarURL: "https://gravatar.com/avatar/c3dff7eaaa128335819d573ee7ada27d?s=400&d=robohash&r=x",
     answers: {
       "8xf0y6ziyjabvozdd253nd": 'optionOne',
       "6ni6ok3ym7mf1p33lnez": 'optionOne',
@@ -12,7 +12,7 @@ let users = {
     },
     questions: ['8xf0y6ziyjabvozdd253nd', 'am8ehyc8byjqgar0jgpub9']
   },
-  tylermcginnis: {
+  shaherjamaleddin: {
     id: 'shaher.je',
     password:'abc321',
     name: 'Shaher Jamal Eddin',
@@ -27,7 +27,7 @@ let users = {
     id: 'mtsamis',
     password:'xyz123',
     name: 'Mike Tsamis',
-    avatarURL: "https://avatars.githubusercontent.com/u/10826716?v=4",
+    avatarURL: "https://gravatar.com/avatar/64daa23854e8759c431f4c66e926926d?s=400&d=robohash&r=x",
     answers: {
       "xj352vofupe1dqz9emx13r": 'optionOne',
       "vthrdm985a262al8qx3do": 'optionTwo',
@@ -39,7 +39,7 @@ let users = {
     id: 'zoshikanlu',
     password:'pass246',
     name: 'Zenobia Oshikanlu',
-    avatarURL: null,
+    avatarURL: "https://gravatar.com/avatar/a9099e54f74e57a5250115078aa4c55d?s=400&d=robohash&r=x",
     answers: {
       "xj352vofupe1dqz9emx13r": 'optionOne',
     },

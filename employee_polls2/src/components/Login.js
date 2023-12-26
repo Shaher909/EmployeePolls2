@@ -1,25 +1,51 @@
 
+import { useState } from 'react';
+import { connect } from 'react-redux';
+import { setAuthUser, handleUserDetails } from '../actions/authedUser';
 import Title from "./Title";
 
-const Login = () => {
+const Login = ({ users, dispatch }) => {
+
+    const [selectedUser, setSelectedUser] = useState('');
+
+    const handleLogin = () => {
+        if (selectedUser) {
+          dispatch(setAuthUser(selectedUser));
+          dispatch(handleUserDetails(selectedUser));
+          
+        } else {
+          // Handle case when no user is selected
+          console.log('Please select a user.');
+        }
+      };
 
     return (
         <div>
             <Title text={"Employees Polls Portal - Login Page"} />
             <label htmlFor="dropdown">Username:</label>
             <br />
-            <input type="button" className="btn" value="Login" />
+            <select
+                id="dropdown"
+                onChange={(e) => setSelectedUser(e.target.value)}
+                value={selectedUser}
+            >
+                <option value="" disabled>
+                Select a username
+                </option>
+                {Object.keys(users).map((userId) => (
+                <option key={userId} value={userId}>
+                    {users[userId].name}
+                </option>
+                ))}
+            </select>
+            <input type="button" className="btn" value="Login" onClick={handleLogin} />
         </div>
     ); 
 }
 
-export default Login;
-
-/*
-<select id="dropdown" name="users">
-                {Object.keys(users).map(id => (
-                <option value={id}>{users[id].name}</option>
-                ))}
-            </select>
-            */
+const mapStateToProps = ({ users }) => ({
+    users,
+  });
+  
+  export default connect(mapStateToProps)(Login)
 
