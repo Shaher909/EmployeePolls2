@@ -10,11 +10,12 @@ const Login = ({ users, dispatch }) => {
 
     const handleLogin = async () => {
         if (selectedUser) {
-          // Dispatch handleUserDetails and wait for the promise to resolve
-          const userDetails = await dispatch(handleUserDetails(selectedUser));
-    
-          // Dispatch setAuthUser with the user details
-          dispatch(setAuthUser(userDetails.id));
+        const userDetails = await dispatch(handleUserDetails(selectedUser));
+        // Dispatch setAuthUser with the user details
+        dispatch(setAuthUser(userDetails.id));
+        // Dispatch handleUserDetails and wait for the promise to resolve
+        
+          
         } else {
           // Handle case when no user is selected
           console.log('Please select a user.');

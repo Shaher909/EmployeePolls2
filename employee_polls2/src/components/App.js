@@ -28,23 +28,24 @@ const App = (props) => {
         ) : null}
         {props.loading === true ? null : (
           <Routes>
-            {props.authedUser && props.authedUser.id ? (
-              <>
-                <Route path="/" exact element={<Dashboard />} />
-                <Route path="/dashboard" exact element={<Dashboard />} />
-                <Route path="/poll" exact element={<Poll />} />
-                <Route path="/error" exact element={<Error />} />
-                <Route path="/add" exact element={<PollCreation />} />
-                <Route path="/leaderboard" exact element={<Leaderboard />} />
-              </>
-            ) : (
+          {props.authedUser?.id !== null ? (
+            <>
+              <Route path="/dashboard" element={<Dashboard />} />
+              <Route path="/poll" element={<Poll />} />
+              <Route path="/error" element={<Error />} />
+              <Route path="/add" element={<PollCreation />} />
+              <Route path="/leaderboard" element={<Leaderboard />} />
               <Route
-                path="/"
-                element={<Navigate to="/login" replace />}
+                path="/login"
+                element={<Navigate to="/dashboard" replace />}
               />
-            )}
-            <Route path="/login" exact element={<Login />} />
-          </Routes>
+              <Route path="/" element={<Dashboard />} />
+            </>
+          ) : (
+            <Route path="/*" element={<Navigate to="/login" replace />} />
+          )}
+          <Route path="/login" element={<Login />} />
+        </Routes>
         )}
       </div>
     </Fragment>

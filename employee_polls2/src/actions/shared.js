@@ -9,6 +9,7 @@ const AUTHED_ID = null;
 export function handleInitialData(){
     return (dispatch) => {
         dispatch(showLoading());
+    
         return getInitialData().then(({users}) => {
             dispatch(receiveUsers(users));
             //dispatch(receiveTweets(tweets));
