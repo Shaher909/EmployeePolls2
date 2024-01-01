@@ -125,3 +125,20 @@ li {
 .logout-button {
   
 }
+
+.PollsContainer{
+  border: 1px solid rgba(0, 0, 0, 0.29);
+  margin: 30px;
+}
+
+.PollsContainer hr{
+  margin: 10px;
+}
+
+.PollWidget{
+  margin: 10px;
+  border: 1px solid gray;
+  display: inline-block;
+  width: auto; 
+  padding: 25px; 
+}
