@@ -1,22 +1,48 @@
 import Title from "./Title";
 import PollWidget from "./PollWidget";
+import { connect } from 'react-redux';
 
-const PollsCollection = ({title}) => {
+const PollsCollection = ({title, authedUser, questions, questionsAnswered}) => {
+
+    // Filter questions based on whether they are answered or unanswered
+    const filteredQuestions = questions.filter(
+    question =>
+    questionsAnswered
+    ? authedUser.answers.hasOwnProperty(question.id)
+    : !authedUser.answers.hasOwnProperty(question.id)
+    );
+
+    // Sort questions based on timestamp in descending order
+    const sortedQuestions = filteredQuestions.sort(
+    (a, b) => b.timestamp - a.timestamp
+    );    
 
     return (
         <div className="PollsContainer">
             <Title text={title} />
             <hr />
-            <PollWidget username='Sam' timestmap={"2022-05-05 10:12:00"} onShowClick="01"></PollWidget>
-            <PollWidget username='Lina' timestmap={"2022-05-15 10:20:00"} onShowClick="02"></PollWidget>
-            <PollWidget username='Farah' timestmap={"2022-05-07 10:30:00"} onShowClick="03"></PollWidget>
-            <PollWidget username='Hadi' timestmap={"2022-05-06 10:42:00"} onShowClick="04"></PollWidget>
+            {sortedQuestions.map(question => (
+                <PollWidget
+                    className="Option"
+                    key={question.id}
+                    question={question}
+                    authorname={question.author}
+                    timestamp={new Date(parseInt(question.timestamp)).toLocaleString()}
+                />
+            ))}
         </div>
         
     ); 
 }
 
-export default PollsCollection;
+const mapStateToProps = state => ({
+  authedUser: state.authedUser,
+  questions: Object.values(state.questions),
+});
+
+export default connect(mapStateToProps)(PollsCollection);
+
+//export default PollsCollection;
 
 
 

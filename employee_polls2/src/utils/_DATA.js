@@ -12,10 +12,10 @@ let users = {
     },
     questions: ['8xf0y6ziyjabvozdd253nd', 'am8ehyc8byjqgar0jgpub9']
   },
-  shaherjamaleddin: {
-    id: 'shaher.je',
+  tylermcginnis: {
+    id: 'tylermcginnis',
     password:'abc321',
-    name: 'Shaher Jamal Eddin',
+    name: 'Tyler Mcginnis',
     avatarURL: "https://avatars.githubusercontent.com/u/10826716?v=4",
     answers: {
       "vthrdm985a262al8qx3do": 'optionOne',

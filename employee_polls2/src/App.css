@@ -115,6 +115,12 @@ li {
   margin: 10px;
 }
 
+.bigAvatar {
+  height: 250px;
+  border-radius: 50px;
+  margin: 10px;
+}
+
 
 .userOverview {
   display: flex;
@@ -139,6 +145,28 @@ li {
   margin: 10px;
   border: 1px solid gray;
   display: inline-block;
-  width: auto; 
+  width: 25%; 
   padding: 25px; 
+}
+
+.questionOptions
+{
+  width: 100%;
+  align-items: center;
+  display: flex;
+  justify-content: center;
+}
+
+.Option {
+  margin-inline: 25px;
+  width: 40%;
+  display: inline-block;
+  border: 1px solid gray;
+}
+
+.round-image {
+  width: 150px; /* Set your desired width */
+  height: 150px; /* Set your desired height */
+  border-radius: 50%; /* Use 50% to create a circle */
+  object-fit: cover; /* Maintain aspect ratio and cover the container */
 }

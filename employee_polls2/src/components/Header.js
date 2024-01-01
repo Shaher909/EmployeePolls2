@@ -57,3 +57,9 @@ const mapStateToProps = ({ authedUser }) => ({
 
 
 
+/*
+                <li>
+                    <Link to="/Poll">Poll</Link>
+                </li>
+                */
+               
