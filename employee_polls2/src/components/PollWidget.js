@@ -1,7 +1,7 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
-import { showQuestion } from '../actions/questions'; // Update the path accordingly
+import { showQuestion } from '../actions/selectedQuestion'; // Update the path accordingly
 
 const PollWidget = ({ question, authorname, timestamp }) => {
   const navigate = useNavigate();

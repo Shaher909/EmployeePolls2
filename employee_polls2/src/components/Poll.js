@@ -42,7 +42,7 @@ const Poll = ({ question, author, authedUser }) => {
 
 
 const mapStateToProps = (state) => {
-    const selectedQuestionID = state.questions.selectedQuestionID;
+    const selectedQuestionID = state.selectedQuestion.selectedQuestionID;
     const question = selectedQuestionID ? state.questions[selectedQuestionID] : null;
     const authorID = question ? question.author : null;
     const author = authorID ? state.users[authorID] : null;
