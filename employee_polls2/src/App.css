@@ -170,3 +170,39 @@ li {
   border-radius: 50%; /* Use 50% to create a circle */
   object-fit: cover; /* Maintain aspect ratio and cover the container */
 }
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+thead {
+  background-color: #3498db;
+  color: #ffffff;
+}
+
+th, td {
+  padding: 10px;
+  border: 1px solid #bdc3c7;
+  text-align: left;
+}
+
+tbody tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+.user-info-container {
+  display: flex;
+  align-items: center;
+}
+
+.user-info-container p {
+  margin: 0;
+}
+
+.user-info-container p:nth-child(3) {
+  font-size: 0.8em;
+  color: #888;
+  margin-top: 5px;
+}

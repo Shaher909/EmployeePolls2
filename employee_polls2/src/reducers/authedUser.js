@@ -15,6 +15,3 @@ export default function authedUser(state = null, action){
     }
 
 }
-
-//return { id: action.id };
-// return action.id !== null ? { ...state, id: action.id } : null;
