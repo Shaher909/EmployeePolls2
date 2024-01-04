@@ -1,10 +1,28 @@
+import React, { useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { logoutUser } from "../actions/authedUser";
 import { connect } from 'react-redux';
+import { receiveUsers } from "../actions/users";
 
-const Header = ({authedUser, dispatch}) => {
+const Header = ({authedUser, dispatch, users}) => {
 
     const navigate = useNavigate();
+
+    // Use useEffect to fetch user details when the component mounts
+    useEffect(() => {
+        // Check if authedUser is not null and if the details are not already in the store
+        if (authedUser && !users[authedUser]) {
+            // Fetch user details from your API or any other source as needed
+            // For example, you can dispatch an action to fetch details from an API
+            // dispatch(fetchUserDetails(authedUser));
+            // For now, let's assume you have the details available locally
+            const userDetails = {
+                ...users[authedUser], // Use the actual user details from the store
+            };
+            // Dispatch an action to store user details in the Redux store
+            dispatch(receiveUsers({ [authedUser]: userDetails }));
+        }
+    }, [authedUser, dispatch, users]);
 
     const handleLogout = () => {
         // Dispatch action to set authedUser to empty
@@ -31,8 +49,8 @@ const Header = ({authedUser, dispatch}) => {
                 <>
                     <li>
                     <div className="userOverview">
-                        <img src={authedUser?.avatarURL} alt={authedUser?.name} className="avatar" />
-                        <p>{authedUser?.id}</p>
+                        <img src={users[authedUser]?.avatarURL} alt={users[authedUser]?.name} className="avatar" />
+                        <p>{users[authedUser]?.id}</p>
                     </div>
                     </li>
                     <li>
@@ -49,8 +67,9 @@ const Header = ({authedUser, dispatch}) => {
     ); 
 }
 
-const mapStateToProps = ({ authedUser }) => ({
+const mapStateToProps = ({ authedUser, users }) => ({
     authedUser,
+    users,
   });
   
   export default connect(mapStateToProps)(Header);

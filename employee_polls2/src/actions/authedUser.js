@@ -1,6 +1,9 @@
+import { receiveUsers } from "./users";
+
 export const SET_AUTHED_USER = "SET_AUTHED_USER";
 export const RECEIVE_USER_DETAILS = "RECEIVE_USER_DETAILS";
 export const LOGOUT_USER = "LOGOUT_USER";
+
 
 export function setAuthUser(id){
     return {
@@ -19,16 +22,6 @@ export function receiveUserDetails(user) {
   export function logoutUser() {
     return {
       type: LOGOUT_USER,
-    };
-  }
-
-export function handleUserDetails(id) {
-    return (dispatch, getState) => {
-        const users = getState().users;
-        const userDetails = users[id];
-
-        dispatch(receiveUserDetails(userDetails));
-        return Promise.resolve(userDetails);
     };
   }
 

@@ -1,26 +1,27 @@
 
 import { useState } from 'react';
 import { connect } from 'react-redux';
-import { setAuthUser, handleUserDetails } from '../actions/authedUser';
+import { setAuthUser } from '../actions/authedUser';
 import Title from "./Title";
+import { useNavigate } from 'react-router-dom'; // Import useNavigate
 
 const Login = ({ users, dispatch }) => {
+  const [selectedUser, setSelectedUser] = useState('');
+  const navigate = useNavigate(); // Initialize the navigate hook
 
-    const [selectedUser, setSelectedUser] = useState('');
+  const handleLogin = async () => {
+    if (selectedUser) {
+      // Dispatch setAuthUser with the user ID
+      dispatch(setAuthUser(selectedUser));
 
-    const handleLogin = async () => {
-        if (selectedUser) {
-        const userDetails = await dispatch(handleUserDetails(selectedUser));
-        // Dispatch setAuthUser with the user details
-        dispatch(setAuthUser(userDetails.id));
-        // Dispatch handleUserDetails and wait for the promise to resolve
-        
-          
-        } else {
-          // Handle case when no user is selected
-          console.log('Please select a user.');
-        }
-      };
+      // Redirect to dashboard after successful login
+      navigate('/dashboard');
+
+    } else {
+      // Handle case when no user is selected
+      console.log('Please select a user.');
+    }
+  };
 
     return (
         <div>

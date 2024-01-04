@@ -19,34 +19,36 @@ const App = (props) => {
   useEffect(() => {
     props.dispatch(handleInitialData());
   }, []);
+
   return (
     <Fragment>
       <LoadingBar />
       <div className="container App">
-        {props.authedUser && props.authedUser.id ? (
-          <Header user={props.authedUser} />
-        ) : null}
-        {props.loading === true ? null : (
-          <Routes>
-          {props.authedUser?.id !== null ? (
+          {props.authedUser ? (
             <>
-              <Route path="/dashboard" element={<Dashboard />} />
-              <Route path="/error" element={<Error />} />
-              <Route path="/add" element={<PollCreation />} />
-              <Route path="/leaderboard" element={<Leaderboard />} />
-              <Route path="/poll/:id" element={<Poll />} />
-              <Route
-                path="/login"
-                element={<Navigate to="/dashboard" replace />}
-              />
-              <Route path="/" element={<Dashboard />} />
+              <Header user={props.authedUser} />
+              <Routes>
+                {props.authedUser.id !== null ? (
+                  <>
+                    <Route path="/dashboard" element={<Dashboard />} />
+                    <Route path="/error" element={<Error />} />
+                    <Route path="/add" element={<PollCreation />} />
+                    <Route path="/leaderboard" element={<Leaderboard />} />
+                    <Route path="/poll/:id" element={<Poll />} />
+                    <Route path="/" element={<Navigate to="/dashboard" replace />} />
+                  </>
+                ) : (
+                  <Route path="/*" element={<Navigate to="/login" replace />} />
+                )}
+                <Route path="/login" element={<Login />} />
+              </Routes>
             </>
           ) : (
-            <Route path="/*" element={<Navigate to="/login" replace />} />
+            <Routes>
+              <Route path="/*" element={<Navigate to="/login" replace />} />
+              <Route path="/login" element={<Login />} />
+            </Routes>
           )}
-          <Route path="/login" element={<Login />} />
-        </Routes>
-        )}
       </div>
     </Fragment>
   );
