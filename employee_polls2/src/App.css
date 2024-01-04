@@ -206,3 +206,11 @@ tbody tr:nth-child(even) {
   color: #888;
   margin-top: 5px;
 }
+
+
+
+/* Style for the chosen option */
+.chosenOption {
+  background-color: green;
+  color: white;
+}
