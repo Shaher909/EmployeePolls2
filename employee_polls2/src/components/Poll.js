@@ -5,8 +5,11 @@ import { saveQuestionAnswer } from "../utils/api";
 import { handleSaveAnswer } from "../actions/questions";
 
 const Poll = ({ question, author, authedUser, userAnswers, dispatch }) => {
+    
+    
+
     if (!question) {
-        return <p>Question not found</p>;
+        return <p>Retrieving question . . . if this this takes a while there's could be an error in getting the data from the back-end.</p>;
     }
 
     const optionOneText = question.optionOne.text;
@@ -71,12 +74,18 @@ const Poll = ({ question, author, authedUser, userAnswers, dispatch }) => {
 }
 
 const mapStateToProps = (state) => {
-    const selectedQuestionID = state.selectedQuestion.selectedQuestionID;
+    // Retrieve selectedQuestionID from localStorage
+    const storedQuestionID = localStorage.getItem('selectedQuestionID');
+
+    // Use storedQuestionID if available, otherwise use the one from the Redux store
+    const selectedQuestionID = storedQuestionID || state.selectedQuestion.selectedQuestionID;
+
     const question = selectedQuestionID ? state.questions[selectedQuestionID] : null;
     const authorID = question ? question.author : null;
     const author = authorID ? state.users[authorID] : null;
     const authedUser = state.authedUser;
-    const userAnswers = authedUser ? state.users[authedUser].answers : null;
+    //const userAnswers = authedUser ? state.users[authedUser].answers : null;
+    const userAnswers = authedUser && state.users[authedUser] ? state.users[authedUser].answers : null;
 
     return {
         question,

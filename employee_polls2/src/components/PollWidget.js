@@ -14,6 +14,9 @@ const PollWidget = ({ question, authorname, timestamp }) => {
       // Dispatch the showQuestion action before navigating
       dispatch(showQuestion(questionID));
 
+      // Store selectedQuestionID in localStorage
+      localStorage.setItem('selectedQuestionID', questionID);
+      
       // Navigate to the Poll component with the questionID
       navigate(`/poll/${questionID}`);
     } else {

@@ -10,10 +10,12 @@ export function handleInitialData(){
     return (dispatch) => {
         dispatch(showLoading());
     
+        const storedAuthedUser = localStorage.getItem('authedUser');
+
         return getInitialData().then(({users, questions}) => {
             dispatch(receiveUsers(users));
             dispatch(receiveQuestions(questions));
-            dispatch(setAuthUser(AUTHED_ID));
+            dispatch(setAuthUser(storedAuthedUser || AUTHED_ID));
             dispatch(hideLoading());
         }) 
     }

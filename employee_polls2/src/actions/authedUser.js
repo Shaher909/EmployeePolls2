@@ -6,6 +6,9 @@ export const LOGOUT_USER = "LOGOUT_USER";
 
 
 export function setAuthUser(id){
+    // Save the authenticated user ID to localStorage
+    localStorage.setItem('authedUser', id);
+    
     return {
         type: SET_AUTHED_USER,
         id,
