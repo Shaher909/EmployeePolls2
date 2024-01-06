@@ -2,11 +2,13 @@ import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { handleAddQuestion } from '../actions/questions';
 import Title from './Title';
+import { useNavigate } from "react-router-dom"; 
 
 const PollCreation = () => {
   const [optionOneText, setOptionOneText] = useState('');
   const [optionTwoText, setOptionTwoText] = useState('');
   const dispatch = useDispatch();
+  const navigate = useNavigate(); // Initialize useNavigate
 
   const handleInputChange = (option, text) => {
     if (option === 'optionOne') {
@@ -19,6 +21,7 @@ const PollCreation = () => {
   const handleSubmit = () => {
     // You might want to add validation here before dispatching the action
     dispatch(handleAddQuestion(optionOneText, optionTwoText));
+    navigate('/dashboard');
   };
 
   return (
