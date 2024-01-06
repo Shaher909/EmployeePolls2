@@ -128,10 +128,6 @@ li {
 }
 
 
-.logout-button {
-  
-}
-
 .PollsContainer{
   border: 1px solid rgba(0, 0, 0, 0.29);
   margin: 30px;
@@ -213,4 +209,53 @@ tbody tr:nth-child(even) {
 .chosenOption {
   background-color: green;
   color: white;
+}
+
+/* PollCreation.css (or add this directly to your component file) */
+.PollCreation {
+  max-width: 400px;
+  margin: auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.PollCreation p {
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 15px;
+}
+
+.PollCreation form {
+  display: flex;
+  flex-direction: column;
+}
+
+.PollCreation label {
+  font-size: 16px;
+  margin-bottom: 10px;
+}
+
+.PollCreation input {
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+.PollCreation button {
+  background-color: #3498db;
+  color: white;
+  padding: 10px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.PollCreation button:hover {
+  background-color: #3498db;
 }

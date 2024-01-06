@@ -51,7 +51,7 @@ const Poll = ({ question, author, authedUser, userAnswers, dispatch }) => {
         <div>
             <Title text={`Poll by ${authorName}`} />
 
-            <p>Would you rather: </p>
+            <h2>Would you rather: </h2>
             <div className="authorInfo">
                 <img src={authorAvatarURL} alt={`${authorName}'s Avatar`} className="bigAvatar" />
             </div>

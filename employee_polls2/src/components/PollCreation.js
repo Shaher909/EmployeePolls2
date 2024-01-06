@@ -22,7 +22,7 @@ const PollCreation = () => {
   };
 
   return (
-    <div>
+    <div className="PollCreation">
       <Title text={'Add a new poll'} />
 
       <p>Would you rather?</p>
