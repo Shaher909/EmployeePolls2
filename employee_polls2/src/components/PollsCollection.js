@@ -1,11 +1,21 @@
 import Title from "./Title";
 import PollWidget from "./PollWidget";
 import { connect } from 'react-redux';
+import { useNavigate } from "react-router-dom"; 
 
 const PollsCollection = ({ title, authedUser, users, questionsAnswered, questions }) => {
+
+    const navigate = useNavigate(); // Initialize useNavigate
     // Retrieve the authenticated user details from the users object
     const authedUserDetails = users[authedUser];
   
+    // Validate if required attributes are defined
+    if (!authedUserDetails || !authedUserDetails.answers) {
+        // Redirect to the login page
+        navigate('/login');
+        return null; // Render nothing if redirection is performed
+    }
+
     // Filter questions based on whether they are answered or unanswered
     const filteredQuestions = questions.filter(
       (question) =>
