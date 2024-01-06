@@ -1,8 +1,10 @@
 import React from "react";
 import Title from "./Title";
 import { connect } from 'react-redux';
+import { saveQuestionAnswer } from "../utils/api";
+import { handleSaveAnswer } from "../actions/questions";
 
-const Poll = ({ question, author, authedUser, userAnswers }) => {
+const Poll = ({ question, author, authedUser, userAnswers, dispatch }) => {
     if (!question) {
         return <p>Question not found</p>;
     }
@@ -19,8 +21,13 @@ const Poll = ({ question, author, authedUser, userAnswers }) => {
 
     // Function to handle the vote (you can implement the logic based on your requirements)
     const handleVote = (option) => {
-        // Implement your vote logic here
+        // Dispatch the action to save the answer in the Redux store
+        dispatch(handleSaveAnswer({ authedUser, qid: question.id, answer: option }))
+        .then(() => {
+        // Dispatch the asynchronous operation to save the answer to the back-end
+        saveQuestionAnswer({ authedUser, qid: question.id, answer: option });
         console.log(`Voting for ${option}`);
+    });
     };
 
     // Calculate the number of votes for each option
