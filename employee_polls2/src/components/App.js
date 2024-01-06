@@ -36,6 +36,7 @@ const App = (props) => {
                     <Route path="/leaderboard" element={<Leaderboard />} />
                     <Route path="/poll/:id" element={<Poll />} />
                     <Route path="/" element={<Navigate to="/dashboard" replace />} />
+                    <Route path="*" element={<Navigate to="/error" />} />
                   </>
                 ) : (
                   <Route path="/*" element={<Navigate to="/login" replace />} />
