@@ -19,9 +19,25 @@ const PollCreation = () => {
   };
 
   const handleSubmit = () => {
-    // You might want to add validation here before dispatching the action
-    dispatch(handleAddQuestion(optionOneText, optionTwoText));
-    navigate('/dashboard');
+    const trimmedOptionOneText = optionOneText.trim();
+    const trimmedOptionTwoText = optionTwoText.trim();
+
+    // Check if both options are filled after trimming whitespace
+    if (!trimmedOptionOneText || !trimmedOptionTwoText) {
+        alert('Both options are required');
+        return;
+    }
+
+    // Dispatch the action after successful validation
+    dispatch(handleAddQuestion(trimmedOptionOneText, trimmedOptionTwoText))
+    .then(() => {
+      // Redirect to the /dashboard route after successful submission
+      navigate('/dashboard');
+    })
+    .catch((error) => {
+      // Handle errors, e.g., display an error message
+      console.error('Error submitting question:', error);
+    });
   };
 
   return (
@@ -37,6 +53,7 @@ const PollCreation = () => {
             type="text"
             value={optionOneText}
             onChange={(e) => handleInputChange('optionOne', e.target.value)}
+            required
           />
         </label>
 
@@ -46,6 +63,7 @@ const PollCreation = () => {
             type="text"
             value={optionTwoText}
             onChange={(e) => handleInputChange('optionTwo', e.target.value)}
+            required
           />
         </label>
 
