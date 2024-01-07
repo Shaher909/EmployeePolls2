@@ -23,7 +23,7 @@ const Leaderboard = ({ users, userAnswers, userQuestions }) => {
             <tr key={userId}>
               <td>
                     <div className='user-info-container'>
-                        <img src={users[userId].avatarURL} className="avatar" />
+                        <img src={users[userId].avatarURL} alt={users[userId].name} className="avatar" />
                         <p>{users[userId].name}</p>
                         <p>({users[userId].id})</p>
                         
@@ -39,26 +39,28 @@ const Leaderboard = ({ users, userAnswers, userQuestions }) => {
   );
 };
 
-const mapStateToProps = ({ users, questions }) => {
-  const userAnswers = {};
-  const userQuestions = {};
-
-  // Calculate the total number of answers for each user
-  Object.keys(users).forEach((userId) => {
-    userAnswers[userId] = Object.keys(users[userId].answers).length;
-  });
-
-  // Calculate the total number of questions for each user
-  Object.keys(questions).forEach((questionId) => {
-    const author = questions[questionId].author;
-    userQuestions[author] = (userQuestions[author] || 0) + 1;
-  });
-
-  return {
-    users,
-    userAnswers,
-    userQuestions,
+const mapStateToProps = (state) => {
+    const { users, questions } = state;
+  
+    const userAnswers = {};
+    const userQuestions = {};
+  
+    // Calculate the total number of answers for each user
+    Object.keys(users).forEach((userId) => {
+      userAnswers[userId] = Object.keys(users[userId].answers).length;
+    });
+  
+    // Calculate the total number of questions for each user
+    Object.keys(questions).forEach((questionId) => {
+      const author = questions[questionId].author;
+      userQuestions[author] = (userQuestions[author] || 0) + 1;
+    });
+  
+    return {
+      users,
+      userAnswers,
+      userQuestions,
+    };
   };
-};
 
 export default connect(mapStateToProps)(Leaderboard);

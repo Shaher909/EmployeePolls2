@@ -12,10 +12,6 @@ const Header = ({authedUser, dispatch, users}) => {
     useEffect(() => {
         // Check if authedUser is not null and if the details are not already in the store
         if (authedUser && !users[authedUser]) {
-            // Fetch user details from your API or any other source as needed
-            // For example, you can dispatch an action to fetch details from an API
-            // dispatch(fetchUserDetails(authedUser));
-            // For now, let's assume you have the details available locally
             const userDetails = {
                 ...users[authedUser], // Use the actual user details from the store
             };
@@ -32,6 +28,11 @@ const Header = ({authedUser, dispatch, users}) => {
         navigate("/login");
       };
 
+    // Check if authedUser is null and return null if true
+    if (authedUser === null) {
+        return null; // or you can return an empty component
+    }
+
     return (
         <nav className="header">
             <ul>
@@ -45,7 +46,7 @@ const Header = ({authedUser, dispatch, users}) => {
                     <Link to="/add">New</Link>
                 </li>
                 
-                {authedUser.id !== null ?  (
+                {authedUser !== null ?  (
                 <>
                     <li>
                     <div className="userOverview">
@@ -74,11 +75,4 @@ const mapStateToProps = ({ authedUser, users }) => ({
   
   export default connect(mapStateToProps)(Header);
 
-
-
-/*
-                <li>
-                    <Link to="/Poll">Poll</Link>
-                </li>
-                */
                

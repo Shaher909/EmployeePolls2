@@ -1,0 +1,59 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Login component renders username dropdown, password field, and button 1`] = `
+<DocumentFragment>
+  <div
+    class="formContainer"
+  >
+    <div>
+      <h1>
+         Employees Polls Portal - Login Page 
+      </h1>
+    </div>
+    <label
+      for="dropdown"
+    >
+      Username:
+    </label>
+    <br />
+    <select
+      id="dropdown"
+    >
+      <option
+        disabled=""
+        value=""
+      >
+        Select a username
+      </option>
+      <option
+        value="user1"
+      >
+        User 1
+      </option>
+      <option
+        value="user2"
+      >
+        User 2
+      </option>
+    </select>
+    <br />
+    <label
+      for="password"
+    >
+      Password:
+    </label>
+    <br />
+    <input
+      id="password"
+      type="password"
+      value=""
+    />
+    <br />
+    <input
+      class="btn"
+      type="button"
+      value="Login"
+    />
+  </div>
+</DocumentFragment>
+`;

@@ -26,12 +26,18 @@ const Poll = ({ question, author, authedUser, userAnswers, dispatch }) => {
     const handleVote = (option) => {
         // Dispatch the action to save the answer in the Redux store
         dispatch(handleSaveAnswer({ authedUser, qid: question.id, answer: option }))
-        .then(() => {
-        // Dispatch the asynchronous operation to save the answer to the back-end
-        saveQuestionAnswer({ authedUser, qid: question.id, answer: option });
-        console.log(`Voting for ${option}`);
-    });
-    };
+          .then(() => {
+            // Dispatch the asynchronous operation to save the answer to the back-end
+            saveQuestionAnswer({ authedUser, qid: question.id, answer: option })
+              .catch((error) => {
+                console.log("Error saving question answer:", error);
+                // If there's an error saving to the back-end, rollback the Redux store
+                dispatch(handleSaveAnswer({ authedUser, qid: question.id, answer: null }));
+              });
+      
+            console.log(`Voting for ${option}`);
+          });
+      };
 
     // Calculate the number of votes for each option
     const votesOptionOne = question.optionOne.votes.length;
@@ -41,8 +47,8 @@ const Poll = ({ question, author, authedUser, userAnswers, dispatch }) => {
     const totalVotes = votesOptionOne + votesOptionTwo;
 
     // Calculate the percentage of votes for each option
-    const percentageOptionOne = (votesOptionOne / totalVotes) * 100;
-    const percentageOptionTwo = (votesOptionTwo / totalVotes) * 100;
+    const percentageOptionOne = totalVotes > 0 ? (votesOptionOne / totalVotes) * 100 : 0;
+    const percentageOptionTwo = totalVotes > 0 ? (votesOptionTwo / totalVotes) * 100 : 0;
 
     // Check if the authedUser has answered this question and get the chosen option
     const chosenOption = hasAnswered ? userAnswers[question.id] : null;
@@ -72,6 +78,7 @@ const Poll = ({ question, author, authedUser, userAnswers, dispatch }) => {
         </div>
     );
 }
+
 
 const mapStateToProps = (state) => {
     // Retrieve selectedQuestionID from localStorage
