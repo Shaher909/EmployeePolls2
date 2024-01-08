@@ -10,16 +10,20 @@ describe('Poll component', () => {
   it('calculates and displays the percentage of people who voted for an option', () => {
     // Mock the necessary values
     const mockQuestion = {
-      id: 'mock-question-id',
-      optionOne: {
-        text: 'Mock Option One',
-        votes: 2, // Number of votes for Option One
+      'mock-question-id': {
+        id: 'mock-question-id',
+        author: 'mock-author-id',
+        timestamp: 123456789, // Replace with an actual timestamp
+        optionOne: {
+          text: 'Mock Option One',
+          votes: ['mock-author-id', 'user1', 'user2'], // Array of user IDs who voted for Option One
+        },
+        optionTwo: {
+          text: 'Mock Option Two',
+          votes: ['user3'], // Array of user IDs who voted for Option Two
+        },
       },
-      optionTwo: {
-        text: 'Mock Option Two',
-        votes: 1, // Number of votes for Option Two
-      },
-      author: "mock-author-id"
+      author: 'mock-author-id',
     };
 
     const mockUsers = {
@@ -38,20 +42,21 @@ describe('Poll component', () => {
         name: 'User 2',
         avatarURL: 'user2-avatar-url',
       },
+      'user3': {
+        id: 'user3',
+        name: 'User 3',
+        avatarURL: 'user3-avatar-url',
+      },
     };
 
     const mockAuthedUser = 'user1';
-
-    const mockUserAnswers = {
-      'mock-question-id': 'optionOne',
-    };
 
     const initialState = {
       selectedQuestion: {
         selectedQuestionID: 'mock-question-id',
       },
       questions: {
-        'mock-question-id': mockQuestion,
+        mockQuestion,
       },
       users: mockUsers,
       authedUser: mockAuthedUser,
@@ -65,14 +70,12 @@ describe('Poll component', () => {
         <Poll />
       </Provider>
     );
-
+    
     // Assertions for percentage calculation
     const percentageOptionOne = getByText('Mock Option One').nextElementSibling;
-    expect(percentageOptionOne).toHaveTextContent('66.67%'); // In this example, 2 out of 3 votes
+    expect(percentageOptionOne.textContent).toContain('75%'); // In this example, 3 out of 4 votes
 
     const percentageOptionTwo = getByText('Mock Option Two').nextElementSibling;
-    expect(percentageOptionTwo).toHaveTextContent('33.33%'); // In this example, 1 out of 3 votes
-
-    // Additional assertions related to the author can be added here if needed
+    expect(percentageOptionTwo.textContent).toContain('25%'); // In this example, 1 out of 4 votes
   });
 });
