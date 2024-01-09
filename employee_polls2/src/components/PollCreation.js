@@ -41,7 +41,7 @@ const PollCreation = () => {
   };
 
   return (
-    <div className="PollCreation">
+    <div className="formContainer">
       <Title text={'Add a new poll'} />
 
       <p>Would you rather?</p>
