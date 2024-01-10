@@ -19,6 +19,7 @@ const Header = ({authedUser, dispatch, users}) => {
             dispatch(receiveUsers({ [authedUser]: userDetails }));
         }
     }, [authedUser, dispatch, users]);
+    
 
     const handleLogout = () => {
         // Dispatch action to set authedUser to empty

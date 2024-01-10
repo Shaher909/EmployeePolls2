@@ -24,7 +24,7 @@ const App = (props) => {
     <Fragment>
       <LoadingBar />
       <div className="container App">
-          {props.authedUser ? (
+          {props.authedUser !== null ? (
             <>
               <Header user={props.authedUser} />
               <Routes>
