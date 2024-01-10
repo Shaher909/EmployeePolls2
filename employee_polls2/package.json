@@ -12,7 +12,6 @@
     "react-redux": "^8.0.5",
     "react-redux-loading-bar": "^5.0.4",
     "react-router-dom": "^6.12.0",
-    "react-scripts": "5.0.0",
     "redux": "^4.2.1",
     "redux-thunk": "^2.4.2",
     "web-vitals": "^2.1.4"
@@ -20,8 +19,9 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "test": "jest",
+    "eject": "react-scripts eject",
+    "clear-test-cache": "jest --clearCache"
   },
   "eslintConfig": {
     "extends": [
@@ -42,6 +42,25 @@
     ]
   },
   "devDependencies": {
-    "@babel/plugin-proposal-private-property-in-object": "^7.21.11"
+    "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
+    "@babel/preset-env": "^7.23.8",
+    "@babel/preset-react": "^7.23.3",
+    "babel-jest": "^27.5.1",
+    "jest": "^27.5.1",
+    "jsdom": "^23.2.0",
+    "react-scripts": "^5.0.1",
+    "redux-mock-store": "^1.5.4"
+  },
+  "babel": {
+    "presets": [
+      "@babel/preset-react",
+      "@babel/preset-env"
+    ]
+  },
+  "jest": {
+    "testEnvironment": "jsdom",
+    "transform": {
+      "^.+\\.jsx?$": "babel-jest"
+    }
   }
 }

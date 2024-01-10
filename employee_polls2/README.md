@@ -70,7 +70,7 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
 
 
-# my notes:
+# Dependencies to be installed
 install react-redux-loading-bar
 install redux
 install react-redux
@@ -83,3 +83,23 @@ run npm install @reduxjs/toolkit
 if the _connect method gives error try
     rm -rf node_modules
     npm install
+install Jest --> npm install --save-dev jest
+install npm install --save-dev @babel/preset-react
+install npm install --save-dev redux-mock-store for the jest redux testing
+install npm install --save-dev babel-jest
+install npm install --save-dev @babel/preset-env
+install npm install --save-dev jsdom
+
+package.json should look like
+"babel": {
+    "presets": [
+      "@babel/preset-react",
+      "@babel/preset-env"
+    ]
+  },
+  "jest": {
+    "testEnvironment": "jsdom",
+    "transform": {
+      "^.+\\.jsx?$": "babel-jest"
+    }
+  }
