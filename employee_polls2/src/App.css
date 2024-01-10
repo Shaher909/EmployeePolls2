@@ -259,3 +259,25 @@ tbody tr:nth-child(even) {
 .formContainer button:hover {
   background-color: #3498db;
 }
+
+.tab-buttons {
+  display: flex;
+  justify-content: center; /* Center the buttons horizontally */
+  margin-bottom: 10px;
+}
+
+.tab-button {
+  background-color: #f0f0f0;
+  border: 1px solid #ccc;
+  padding: 10px 15px;
+  cursor: pointer;
+  margin-right: 10px;
+  font-weight: normal;
+  transition: background-color 0.3s; /* Add a smooth background color transition */
+}
+
+.tab-button.active {
+  background-color: #3498db;
+  color: #fff;
+  font-weight: bold;
+}
