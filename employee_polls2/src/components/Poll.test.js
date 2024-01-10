@@ -57,6 +57,13 @@ describe('Poll component', () => {
               [mocQusetion.id]: 'optionTwo', // User 3 voted for Option Two
             },
           },
+          'user4': {
+            id: 'user4',
+            name: 'User 4',
+            avatarURL: 'user4-avatar-url',
+            answers: {
+            },
+          },
         };
 
     const mockAuthedUser = 'user1';
