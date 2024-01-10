@@ -47,9 +47,10 @@ const PollCreation = () => {
       <p>Would you rather?</p>
 
       <form>
-        <label>
+        <label htmlFor="optionOne">
           Option One:
           <input
+            id="optionOne"
             type="text"
             value={optionOneText}
             onChange={(e) => handleInputChange('optionOne', e.target.value)}
@@ -57,9 +58,10 @@ const PollCreation = () => {
           />
         </label>
 
-        <label>
+        <label htmlFor="optionTwo">
           Option Two:
           <input
+            id="optionTwo"
             type="text"
             value={optionTwoText}
             onChange={(e) => handleInputChange('optionTwo', e.target.value)}

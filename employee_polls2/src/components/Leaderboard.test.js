@@ -22,21 +22,10 @@ describe('Leaderboard component', () => {
         question4: { id: 'question4', author: 'user2', timestamp: 123456792, optionOne: { votes: 1, text: 'Option One' }, optionTwo: { votes: 1, text: 'Option Two' } },
       };
       
-     /*const userAnswers = {
-        user1: 2, // Number of answers for user1
-        user2: 2, // Number of answers for user2
-      };*/
-      
-      /*const userQuestions = {
-        user1: 2, // Total number of questions for user1
-        user2: 2, // Total number of questions for user2
-      };*/
 
     const store = mockStore({
       users,
       questions,
-      //userAnswers,
-      //userQuestions,
     });
 
     const { getByText } = render(
