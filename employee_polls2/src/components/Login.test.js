@@ -7,6 +7,7 @@ import configureStore from 'redux-mock-store';
 import Login from './Login';
 
 const mockStore = configureStore();
+global.alert = jest.fn();
 
 describe('Login component', () => {
   it('renders username dropdown, password field, and button', () => {

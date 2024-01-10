@@ -12,6 +12,7 @@ const Poll = ({ question, author, authedUser, userAnswers, dispatch }) => {
         return <p>Retrieving question . . . if this this takes a while there's could be an error in getting the data from the back-end.</p>;
     }
 
+    console.log('Question:', question);
     const optionOneText = question.optionOne.text;
     const optionTwoText = question.optionTwo.text;
     const authorName = author.name;
