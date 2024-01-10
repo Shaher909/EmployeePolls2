@@ -7,7 +7,7 @@ import { useNavigate } from 'react-router-dom'; // Import useNavigate
 const Login = ({ users, dispatch }) => {
   const [selectedUser, setSelectedUser] = useState('');
   const [password, setPassword] = useState('');
-  const navigate = useNavigate(); // Initialize the navigate hook
+  //const navigate = useNavigate(); // Initialize the navigate hook
 
   const handleLogin = async () => {
     if (selectedUser && password && users[selectedUser]?.password === password) {
@@ -15,7 +15,7 @@ const Login = ({ users, dispatch }) => {
       dispatch(setAuthUser(selectedUser));
 
       // Redirect to dashboard after successful login
-      navigate('/dashboard');
+      //navigate('/dashboard');
     } else {
       alert('Invalid username or password');
       // Handle case when no user is selected or password is incorrect

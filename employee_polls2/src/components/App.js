@@ -1,8 +1,8 @@
 import { useEffect, Fragment } from "react";
-import { connect }  from "react-redux";
+import { connect } from "react-redux";
 import { handleInitialData } from "../actions/shared";
-import LoadingBar  from "react-redux-loading-bar";
-import { Navigate, Routes, Route } from "react-router-dom";
+import LoadingBar from "react-redux-loading-bar";
+import { Routes, Route } from "react-router-dom";
 
 import Title from './Title';
 import Dashboard from "./Dashboard";
@@ -24,39 +24,32 @@ const App = (props) => {
     <Fragment>
       <LoadingBar />
       <div className="container App">
-          {props.authedUser !== null ? (
-            <>
-              <Header user={props.authedUser} />
-              <Routes>
-                {props.authedUser.id !== null ? (
-                  <>
-                    <Route path="/dashboard" element={<Dashboard />} />
-                    <Route path="/error" element={<Error />} />
-                    <Route path="/add" element={<PollCreation />} />
-                    <Route path="/leaderboard" element={<Leaderboard />} />
-                    <Route path="/poll/:id" element={<Poll />} />
-                    <Route path="/" element={<Navigate to="/dashboard" replace />} />
-                    <Route path="*" element={<Navigate to="/error" />} />
-                  </>
-                ) : (
-                  <Route path="/*" element={<Navigate to="/login" replace />} />
-                )}
-                <Route path="/login" element={<Login />} />
-              </Routes>
-            </>
-          ) : (
+        {props.authedUser !== null ? (
+          <>
+            <Header user={props.authedUser} />
             <Routes>
-              <Route path="/*" element={<Navigate to="/login" replace />} />
-              <Route path="/login" element={<Login />} />
+              <Route path="/dashboard" element={<Dashboard />} />
+              <Route path="/error" element={<Error />} />
+              <Route path="/add" element={<PollCreation />} />
+              <Route path="/leaderboard" element={<Leaderboard />} />
+              <Route path="/poll/:id" element={<Poll />} />
+              <Route path="/login" element={<Dashboard />} />
+              <Route path="/" element={<Dashboard />} />
+              <Route path="/*" element={<Error />} />
             </Routes>
-          )}
+          </>
+        ) : (
+          <Routes>
+            <Route path="/*" element={<Login />} />
+            <Route path="/login" element={<Login />} />
+          </Routes>
+        )}
       </div>
     </Fragment>
   );
 };
 
-
-const mapStateToProps = ({authedUser}) => ({
+const mapStateToProps = ({ authedUser }) => ({
   loading: authedUser === null,
   authedUser: authedUser,
 });
