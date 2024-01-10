@@ -69,26 +69,49 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
 
+# This application has 8 automated tests organized in 5 test suites:
+Header.test.js
+- verifies the navigation bar displays all expected links
+
+Loign.test.js
+- snapshot test for the file
+- DOM test for at least one file which uses the fireEvent function. For example use fireEvent.click() for clicking a button and verifying that something changed in a component or fireEvent.change() to add text to an input field or select an option in a dropdown. After doing this, verify the UI changed in some way using the expect() method from jest
+- verifies that a user name field, password field, and submit button are present on the page.
+- Verifies that a user entering an incorrect username or password and clicking submit will see an error on the page.
+
+
+Poll.test.js
+- verifies that the percentage of people who voted for an option is calculated and displayed correctly
+
+_Data.test.js
+#1 async unit test for _saveQuestion to verify that the saved question is returned and all expected fields are populated when correctly formatted data is passed to the function.
+#2 an async unit test for _saveQuestion to verify that an error is returned if incorrect data is passed to the function
+#3 an async unit test for _saveQuestionAnswer to verify that an error is returned if incorrect data is passed to the function.
+#4 async unit test for _saveQuestionAnswer to verify that the saved question answer is returned and all expected fields are populated when correctly formatted data is passed to the function.
+
+Leaderboard.test.js
+- Verifies that the leaderboard is displaying the correct user name, number of questions asked, and number of questions answered.
+
 
 # Dependencies to be installed
-install react-redux-loading-bar
-install redux
-install react-redux
-install react-redux-loading-bar
-install react-router-dom
-install --save-dev @babel/plugin-proposal-private-property-in-object
-install redux-thunk
-run npm install redux react-redux
-run npm install @reduxjs/toolkit
+npm install react-redux-loading-bar
+npm install redux
+npm install react-redux
+npm install react-redux-loading-bar
+npm install react-router-dom
+npm install --save-dev @babel/plugin-proposal-private-property-in-object
+npm install redux-thunk
+npm install redux react-redux
+npm install @reduxjs/toolkit
 if the _connect method gives error try
     rm -rf node_modules
     npm install
-install Jest --> npm install --save-dev jest
-install npm install --save-dev @babel/preset-react
-install npm install --save-dev redux-mock-store for the jest redux testing
-install npm install --save-dev babel-jest
-install npm install --save-dev @babel/preset-env
-install npm install --save-dev jsdom
+npm install Jest --> npm install --save-dev jest
+npm install npm install --save-dev @babel/preset-react
+npm install npm install --save-dev redux-mock-store for the jest redux testing
+npm install npm install --save-dev babel-jest
+npm install npm install --save-dev @babel/preset-env
+npm install npm install --save-dev jsdom
 
 package.json should look like
 "babel": {
