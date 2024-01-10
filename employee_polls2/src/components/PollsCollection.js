@@ -2,6 +2,7 @@ import Title from "./Title";
 import PollWidget from "./PollWidget";
 import { connect } from 'react-redux';
 import { useNavigate } from "react-router-dom"; 
+import React from "react";
 
 const PollsCollection = ({ title, authedUser, users, questionsAnswered, questions }) => {
 
