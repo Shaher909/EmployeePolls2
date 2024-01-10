@@ -1,16 +1,33 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Title from "./Title";
 import { connect } from 'react-redux';
 import { saveQuestionAnswer } from "../utils/api";
 import { handleSaveAnswer } from "../actions/questions";
+import { useNavigate } from 'react-router-dom';
+import Error from "./Error";
+
 
 const Poll = ({ question, author, authedUser, userAnswers, dispatch }) => {
-    
+    const navigate = useNavigate();
+
+    useEffect(() => {
+        // Clear the stored question ID when the component mounts
+        localStorage.removeItem('selectedQuestionID');
+      }, []); // Empty dependency array ensures this effect runs only once
     
 
-    if (!question) {
-        return <p>Retrieving question . . . if this this takes a while there's could be an error in getting the data from the back-end.</p>;
+      useEffect(() => {
+        // Redirect to the Error component if there's no question
+        if (!question) {
+          navigate('/error');
+        }
+      }, [question, navigate]);
+
+      if (!question) {
+        // Redirecting to the Error component if there's no question
+        return null; // Render nothing while redirecting
     }
+
 
     console.log('Question:', question);
     const optionOneText = question.optionOne.text;

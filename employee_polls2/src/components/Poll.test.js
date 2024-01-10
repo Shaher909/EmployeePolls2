@@ -3,6 +3,7 @@ import { render, waitFor } from '@testing-library/react';
 import { Provider } from 'react-redux';
 import Poll from './Poll';
 import configureStore from 'redux-mock-store';
+import { MemoryRouter } from 'react-router-dom';
 
 const mockStore = configureStore();
 
@@ -84,7 +85,9 @@ describe('Poll component', () => {
     // Render the component with the mock store
     const { getByText } = render(
       <Provider store={store}>
-        <Poll />
+        <MemoryRouter>
+            <Poll />
+        </MemoryRouter>
       </Provider>
     );
 
