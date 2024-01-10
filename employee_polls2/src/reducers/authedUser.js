@@ -12,9 +12,9 @@ export default function authedUser(state = storedAuthedUser, action){
             return action.user !== undefined ? action.user : state;
 
         case LOGOUT_USER:
-            localStorage.removeItem('authedUser');
+            //localStorage.removeItem('authedUser');
             return  null;
-            
+
         default:
             return state;
     }
