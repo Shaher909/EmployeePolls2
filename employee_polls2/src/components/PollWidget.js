@@ -18,7 +18,7 @@ const PollWidget = ({ question, authorname, timestamp }) => {
       localStorage.setItem('selectedQuestionID', questionID);
       
       // Navigate to the Poll component with the questionID
-      navigate(`/poll/${questionID}`);
+      navigate(`/questions/${questionID}`);
     } else {
       console.error('Something is wrong with the question data:', question);
       // You might want to handle this error case, e.g., show a message to the user

@@ -32,7 +32,7 @@ const App = (props) => {
               <Route path="/error" element={<Error />} />
               <Route path="/add" element={<PollCreation />} />
               <Route path="/leaderboard" element={<Leaderboard />} />
-              <Route path="/poll/:id" element={<Poll />} />
+              <Route path="/questions/:id" element={<Poll />} />
               <Route path="/login" element={<Dashboard />} />
               <Route path="/" element={<Dashboard />} />
               <Route path="/*" element={<Error />} />
