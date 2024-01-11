@@ -9,6 +9,7 @@ import { createStore } from "redux";
 import { Provider } from "react-redux";
 import reducer from './reducers';
 
+
 //make the store aware of the middleware
 import middleware from "./middleware";
 

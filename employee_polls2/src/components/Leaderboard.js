@@ -2,11 +2,8 @@ import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import Title from "./Title";
 
-const Leaderboard = ({ users, userAnswers, userQuestions }) => {
-  useEffect(() => {
-    // You can dispatch any additional actions or data fetching here if needed
-  }, []);
-
+const Leaderboard = ({ sortedUsers }) => {
+  
   return (
     <div>
       <Title text={"Leaderboard"} />
@@ -19,18 +16,17 @@ const Leaderboard = ({ users, userAnswers, userQuestions }) => {
           </tr>
         </thead>
         <tbody>
-          {Object.keys(users).map((userId) => (
-            <tr key={userId}>
+          {sortedUsers.map((user) => (
+            <tr key={user.id}>
               <td>
-                    <div className='user-info-container'>
-                        <img src={users[userId].avatarURL} alt={users[userId].name} className="avatar" />
-                        <p>{users[userId].name}</p>
-                        <p>({users[userId].id})</p>
-                        
-                    </div>
+                <div className='user-info-container'>
+                  <img src={user.avatarURL} alt={user.name} className="avatar" />
+                  <p>{user.name}</p>
+                  <p>({user.id})</p>
+                </div>
               </td>
-              <td>{userAnswers[userId] || 0}</td>
-              <td>{userQuestions[userId] || 0}</td>
+              <td>{user.answered || 0}</td>
+              <td>{user.created || 0}</td>
             </tr>
           ))}
         </tbody>
@@ -40,27 +36,35 @@ const Leaderboard = ({ users, userAnswers, userQuestions }) => {
 };
 
 const mapStateToProps = (state) => {
-    const { users, questions } = state;
-  
-    const userAnswers = {};
-    const userQuestions = {};
-  
-    // Calculate the total number of answers for each user
-    Object.keys(users).forEach((userId) => {
-      userAnswers[userId] = Object.keys(users[userId].answers).length;
-    });
-  
-    // Calculate the total number of questions for each user
-    Object.keys(questions).forEach((questionId) => {
-      const author = questions[questionId].author;
-      userQuestions[author] = (userQuestions[author] || 0) + 1;
-    });
-  
-    return {
-      users,
-      userAnswers,
-      userQuestions,
-    };
+  const { users, questions } = state;
+
+  const userAnswers = {};
+  const userQuestions = {};
+
+  // Calculate the total number of answers for each user
+  Object.keys(users).forEach((userId) => {
+    userAnswers[userId] = Object.keys(users[userId].answers).length;
+  });
+
+  // Calculate the total number of questions for each user
+  Object.keys(questions).forEach((questionId) => {
+    const author = questions[questionId].author;
+    userQuestions[author] = (userQuestions[author] || 0) + 1;
+  });
+
+  // Calculate the total score for each user (sum of answered and created)
+  const sortedUsers = Object.keys(users).map((userId) => ({
+    id: userId,
+    name: users[userId].name,
+    avatarURL: users[userId].avatarURL,
+    answered: userAnswers[userId] || 0,
+    created: userQuestions[userId] || 0,
+    totalScore: (userAnswers[userId] || 0) + (userQuestions[userId] || 0),
+  })).sort((a, b) => b.totalScore - a.totalScore);
+
+  return {
+    sortedUsers,
   };
+};
 
 export default connect(mapStateToProps)(Leaderboard);

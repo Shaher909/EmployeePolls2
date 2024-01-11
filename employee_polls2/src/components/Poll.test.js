@@ -87,7 +87,7 @@ describe('Poll component', () => {
       <Provider store={store}>
         <MemoryRouter>
             <Poll />
-        </MemoryRouter>
+        </MemoryRouter> 
       </Provider>
     );
 
