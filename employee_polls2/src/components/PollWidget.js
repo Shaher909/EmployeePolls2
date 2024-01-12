@@ -28,7 +28,7 @@ const PollWidget = ({ question, authorname, timestamp }) => {
   return (
     <div className="PollWidget">
       <p>{authorname}</p>
-      <p>{timestamp}</p>
+      <p data-testid={`poll-widget-${question.id}`}>{timestamp}</p>
       <button className="btn" onClick={handleShowClick}>
         Show
       </button>

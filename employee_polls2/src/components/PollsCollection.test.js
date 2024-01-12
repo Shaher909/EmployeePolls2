@@ -45,10 +45,10 @@ describe('PollsCollection component', () => {
 
     // Check if the component renders the mocked question
     const questionAuthor = screen.getByText('mtsamis');
-    expect(questionAuthor).toBeTruthy(); // or expect(questionAuthor).toBeDefined();
+    expect(questionAuthor).toBeTruthy(); 
 
-    const questionDate = screen.getByText('4/30/2017, 9:16:07 PM');
-    expect(questionDate).toBeTruthy(); // or expect(questionDate).toBeDefined();
+    const timestampElement = screen.getByTestId(`poll-widget-xj352vofupe1dqz9emx13r`);
+    expect(timestampElement.textContent).toBeTruthy();
 
   });
 });

@@ -41,6 +41,7 @@ const PollsCollection = ({ title, authedUser, users, questionsAnswered, question
             question={question}
             authorname={question.author}
             timestamp={new Date(parseInt(question.timestamp)).toLocaleString()}
+            data-testid={`poll-widget-${question.id}`}
           />
         ))}
       </div>
