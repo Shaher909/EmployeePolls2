@@ -69,7 +69,7 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
 
-# This application has 8 automated tests organized in 5 test suites:
+# This application has11 automated tests organized in 8 test suites:
 Header.test.js
 - verifies the navigation bar displays all expected links
 
@@ -91,6 +91,16 @@ _Data.test.js
 
 Leaderboard.test.js
 - Verifies that the leaderboard is displaying the correct user name, number of questions asked, and number of questions answered.
+
+Error.test.js
+- Tests that the error page can render the expected error message
+
+Title.test.js
+- Verifies that the Title component used on almost every page can render expected text
+
+PollCreation.test.js
+- Verifies that a new Poll/Question can be created
+
 
 
 # Dependencies to be installed

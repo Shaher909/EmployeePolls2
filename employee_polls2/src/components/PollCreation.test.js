@@ -64,7 +64,5 @@ describe('PollCreation component', () => {
     // Assert that the correct arguments were passed to handleAddQuestion
     expect(handleAddQuestion).toHaveBeenCalledWith('Option One Text', 'Option Two Text');
 
-    // Optionally, you can check other aspects of your component's behavior
-    // For example, if it displays a success message or performs a redirection
   });
 });
